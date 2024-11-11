@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Summary - Property Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <div class="container">
+    <h4>Budget Summary</h4>
+    
+    <!-- Quick Stats -->
+    <div class="row">
+      <div class="col s12 m3">
+        <div class="card blue darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Current Balance</span>
+            <h4 id="current-balance">₱0.00</h4>
+            <p id="balance-change" class="percent-change">+0.00%</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card green darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Monthly Revenue</span>
+            <h4 id="monthly-revenue">₱0.00</h4>
+            <p id="revenue-change" class="percent-change">+0.00%</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card red darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Monthly Expenses</span>
+            <h4 id="monthly-expenses">₱0.00</h4>
+            <p id="expenses-change" class="percent-change">+0.00%</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card orange darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Net Income</span>
+            <h4 id="net-income">₱0.00</h4>
+            <p id="income-change" class="percent-change">+0.00%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Annual Overview -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Annual Overview</span>
+            <canvas id="annual-chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Budget Health Indicators -->
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Revenue Distribution</span>
+            <canvas id="revenue-distribution-chart"></canvas>
+            <div class="collection" id="revenue-breakdown">
+              <!-- Revenue breakdown items will be added here -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Expense Distribution</span>
+            <canvas id="expense-distribution-chart"></canvas>
+            <div class="collection" id="expense-breakdown">
+              <!-- Expense breakdown items will be added here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Performance Indicators -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Key Performance Indicators</span>
+            <div class="row">
+              <div class="col s12 m4">
+                <div class="kpi-box">
+                  <h5>Revenue Growth Rate</h5>
+                  <div class="progress">
+                    <div class="determinate" id="revenue-growth-rate" style="width: 0%"></div>
+                  </div>
+                  <span id="revenue-growth-value">0%</span>
+                </div>
+              </div>
+              <div class="col s12 m4">
+                <div class="kpi-box">
+                  <h5>Expense Ratio</h5>
+                  <div class="progress">
+                    <div class="determinate" id="expense-ratio" style="width: 0%"></div>
+                  </div>
+                  <span id="expense-ratio-value">0%</span>
+                </div>
+              </div>
+              <div class="col s12 m4">
+                <div class="kpi-box">
+                  <h5>Operating Margin</h5>
+                  <div class="progress">
+                    <div class="determinate" id="operating-margin" style="width: 0%"></div>
+                  </div>
+                  <span id="operating-margin-value">0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Transactions -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Recent Transactions</span>
+            <table class="striped">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Category</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="recent-transactions">
+                <!-- Recent transactions will be populated here -->
+              </tbody>
+            </table>
+          </div>
+          <div class="card-action">
+            <a href="/revenue-management.html">View All Revenue</a>
+            <a href="/expense-management.html">View All Expenses</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Budget Alerts -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Budget Alerts</span>
+            <div id="budget-alerts" class="collection">
+              <!-- Budget alerts will be populated here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Export Options -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Export Options</span>
+            <button class="btn waves-effect waves-light" id="export-pdf">
+              Export as PDF
+              <i class="material-icons right">picture_as_pdf</i>
+            </button>
+            <button class="btn waves-effect waves-light" id="export-excel">
+              Export as Excel
+              <i class="material-icons right">grid_on</i>
+            </button>
+            <button class="btn waves-effect waves-light" id="print-summary">
+              Print Summary
+              <i class="material-icons right">print</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Reminder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #FFC107;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .content {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .payment-details {
+            background-color: #FFF8E1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .amount {
+            font-size: 24px;
+            color: #FFA000;
+            font-weight: bold;
+        }
+        .due-date {
+            color: #D32F2F;
+            font-weight: bold;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #FFC107;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Payment Reminder</h1>
+    </div>
+    <div class="content">
+        <p>Hello,</p>
+        <p>This is a friendly reminder that your payment is due soon.</p>
+        <div class="payment-details">
+            <h2>Payment Details:</h2>
+            <p><strong>Property:</strong> {{propertyName}}</p>
+            <p><strong>Amount Due:</strong> <span class="amount">${{amount}}</span></p>
+            <p><strong>Due Date:</strong> <span class="due-date">{{dueDate}}</span></p>
+        </div>
+        <center>
+            <a href="{{paymentUrl}}" class="button">Make Payment Now</a>
+        </center>
+        <p>To avoid any late fees, please ensure your payment is made before the due date.</p>
+        <p>If you've already made this payment, please disregard this reminder.</p>
+    </div>
+    <div class="footer">
+        <p>&copy; {{year}} Property Management System. All rights reserved.</p>
+        <p>Contact us: {{supportEmail}}</p>
+    </div>
+</body>
+</html>

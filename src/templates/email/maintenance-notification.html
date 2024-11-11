@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #3F51B5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .content {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .maintenance-details {
+            background-color: #E8EAF6;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .contact-info {
+            background-color: #C5CAE9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .priority-high {
+            color: #D32F2F;
+            font-weight: bold;
+        }
+        .priority-medium {
+            color: #FFA000;
+            font-weight: bold;
+        }
+        .priority-low {
+            color: #388E3C;
+            font-weight: bold;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3F51B5;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+        .important-note {
+            background-color: #FFEBEE;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .schedule-time {
+            font-size: 18px;
+            font-weight: bold;
+            color: #3F51B5;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Maintenance Notification</h1>
+    </div>
+    <div class="content">
+        <p>Hello,</p>
+        <p>This is to inform you about scheduled maintenance at your property.</p>
+        
+        <div class="maintenance-details">
+            <h2>Maintenance Details:</h2>
+            <p><strong>Property:</strong> {{propertyName}}</p>
+            <p><strong>Type:</strong> {{maintenanceType}}</p>
+            <p><strong>Priority:</strong> 
+                <span class="priority-{{priority}}">{{priority}}</span>
+            </p>
+            <p><strong>Date:</strong> {{scheduledDate}}</p>
+            <p><strong>Time:</strong> <span class="schedule-time">{{scheduledTime}}</span></p>
+            <p><strong>Estimated Duration:</strong> {{estimatedDuration}}</p>
+            <p><strong>Description:</strong> {{description}}</p>
+        </div>
+
+        <div class="contact-info">
+            <h3>Maintenance Contact:</h3>
+            <p><strong>Contact Person:</strong> {{contactPerson}}</p>
+            <p><strong>Phone:</strong> {{contactPhone}}</p>
+            {{#if contactEmail}}
+            <p><strong>Email:</strong> {{contactEmail}}</p>
+            {{/if}}
+        </div>
+
+        <div class="important-note">
+            <h3>Important Notes:</h3>
+            <ul>
+                <li>Please ensure access to the maintenance area is clear</li>
+                <li>Pets should be secured during maintenance</li>
+                <li>A property representative will be present during maintenance</li>
+            </ul>
+        </div>
+
+        {{#if requiresAccess}}
+        <p><strong>Access Requirements:</strong></p>
+        <ul>
+            <li>{{accessRequirements}}</li>
+        </ul>
+        {{/if}}
+
+        <center>
+            <a href="{{maintenanceDetailsUrl}}" class="button">View Maintenance Details</a>
+        </center>
+
+        {{#if canReschedule}}
+        <p>If this time doesn't work for you, please click below to reschedule:</p>
+        <center>
+            <a href="{{rescheduleUrl}}" class="button" style="background-color: #FF5722;">Request Reschedule</a>
+        </center>
+        {{/if}}
+
+        <p>If you have any questions or concerns about this maintenance work, please don't hesitate to contact us.</p>
+    </div>
+
+    {{#if additionalNotes}}
+    <div class="content" style="margin-top: 20px;">
+        <h3>Additional Notes:</h3>
+        <p>{{additionalNotes}}</p>
+    </div>
+    {{/if}}
+
+    <div class="footer">
+        <p>This is an automated message. Please do not reply directly to this email.</p>
+        <p>&copy; {{year}} Property Management System. All rights reserved.</p>
+        <p>Contact us: {{supportEmail}}</p>
+    </div>
+</body>
+</html>

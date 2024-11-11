@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Management - Property Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <div class="container">
+    <h4>Expense Management</h4>
+    
+    <!-- Add Expense Form -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Add New Expense</span>
+            <form id="expense-form">
+              <div class="row">
+                <div class="input-field col s12 m6">
+                  <select id="category" required>
+                    <option value="" disabled selected>Choose category</option>
+                    <option value="maintenance">Maintenance</option>
+                    <option value="utilities">Utilities</option>
+                    <option value="supplies">Supplies</option>
+                    <option value="repairs">Repairs</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <label>Category</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <input id="item" type="text" required>
+                  <label for="item">Item Description</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 m6">
+                  <input id="price" type="number" required>
+                  <label for="price">Price</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <input id="expense-date" type="date" required>
+                  <label for="expense-date">Expense Date</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 m6">
+                  <select id="unit-id">
+                    <option value="" selected>Choose unit (optional)</option>
+                  </select>
+                  <label>Unit Number</label>
+                </div>
+                <div class="file-field input-field col s12 m6">
+                  <div class="btn">
+                    <span>Receipt</span>
+                    <input type="file" id="receipt-photo" accept="image/*">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload receipt photo">
+                  </div>
+                </div>
+              </div>
+              <button class="btn waves-effect waves-light" type="submit">
+                Add Expense
+                <i class="material-icons right">add</i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expense List -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Expense List</span>
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input type="text" id="expense-search" placeholder="Search expenses...">
+              </div>
+              <div class="input-field col s12 m6">
+                <select id="category-filter">
+                  <option value="">All Categories</option>
+                  <option value="maintenance">Maintenance</option>
+                  <option value="utilities">Utilities</option>
+                  <option value="supplies">Supplies</option>
+                  <option value="repairs">Repairs</option>
+                  <option value="other">Other</option>
+                </select>
+                <label>Filter by Category</label>
+              </div>
+            </div>
+            <table class="striped">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Category</th>
+                  <th>Item</th>
+                  <th>Price</th>
+                  <th>Unit</th>
+                  <th>Receipt</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="expense-list">
+                <!-- Expense data will be populated here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Expense Modal -->
+  <div id="edit-expense-modal" class="modal">
+    <div class="modal-content">
+      <h4>Edit Expense</h4>
+      <form id="edit-expense-form">
+        <!-- Form fields will be populated dynamically -->
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+      <button type="submit" form="edit-expense-form" class="waves-effect waves-green btn">Save</button>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>

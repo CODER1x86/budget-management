@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revenue Management - Property Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <div class="container">
+    <h4>Revenue Management</h4>
+    
+    <!-- Add Revenue Form -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Add New Revenue</span>
+            <form id="revenue-form">
+              <div class="row">
+                <div class="input-field col s12 m6">
+                  <select id="unit-id" required>
+                    <option value="" disabled selected>Choose unit</option>
+                  </select>
+                  <label>Unit Number</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <input id="amount" type="number" required>
+                  <label for="amount">Amount</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 m6">
+                  <input id="payment-date" type="date" required>
+                  <label for="payment-date">Payment Date</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <select id="payment-method" required>
+                    <option value="" disabled selected>Choose payment method</option>
+                  </select>
+                  <label>Payment Method</label>
+                </div>
+              </div>
+              <button class="btn waves-effect waves-light" type="submit">
+                Add Revenue
+                <i class="material-icons right">add</i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Revenue List -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Revenue List</span>
+            <table class="striped">
+              <thead>
+                <tr>
+                  <th>Unit</th>
+                  <th>Amount</th>
+                  <th>Payment Date</th>
+                  <th>Method</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="revenue-list">
+                <!-- Revenue data will be populated here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>

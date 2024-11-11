@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Details - Property Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <div class="container">
+    <h4>Budget Details</h4>
+    
+    <!-- Year Selection -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Select Year</span>
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <select id="year-select" class="browser-default">
+                  <!-- Years will be populated dynamically -->
+                </select>
+              </div>
+              <div class="col s12 m6">
+                <button class="btn waves-effect waves-light" id="load-budget">
+                  Load Budget Details
+                  <i class="material-icons right">refresh</i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Budget Overview -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Budget Overview</span>
+            <div class="row">
+              <div class="col s12 m3">
+                <div class="summary-box">
+                  <h5>Starting Balance</h5>
+                  <h3 id="starting-balance">₱0.00</h3>
+                </div>
+              </div>
+              <div class="col s12 m3">
+                <div class="summary-box">
+                  <h5>Total Revenue</h5>
+                  <h3 id="total-revenue">₱0.00</h3>
+                </div>
+              </div>
+              <div class="col s12 m3">
+                <div class="summary-box">
+                  <h5>Total Expenses</h5>
+                  <h3 id="total-expenses">₱0.00</h3>
+                </div>
+              </div>
+              <div class="col s12 m3">
+                <div class="summary-box">
+                  <h5>Available Balance</h5>
+                  <h3 id="available-balance">₱0.00</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly Breakdown -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Monthly Breakdown</span>
+            <canvas id="monthly-chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Monthly Data -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Monthly Details</span>
+            <table class="striped responsive-table">
+              <thead>
+                <tr>
+                  <th>Month</th>
+                  <th>Revenue</th>
+                  <th>Expenses</th>
+                  <th>Net</th>
+                  <th>Running Balance</th>
+                </tr>
+              </thead>
+              <tbody id="monthly-details">
+                <!-- Monthly data will be populated here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Budget Analysis -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Budget Analysis</span>
+            <div class="row">
+              <div class="col s12 m6">
+                <h5>Revenue Sources</h5>
+                <canvas id="revenue-chart"></canvas>
+              </div>
+              <div class="col s12 m6">
+                <h5>Expense Categories</h5>
+                <canvas id="expense-chart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Export Options -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Export Options</span>
+            <button class="btn waves-effect waves-light" id="export-pdf">
+              Export as PDF
+              <i class="material-icons right">picture_as_pdf</i>
+            </button>
+            <button class="btn waves-effect waves-light" id="export-excel">
+              Export as Excel
+              <i class="material-icons right">grid_on</i>
+            </button>
+            <button class="btn waves-effect waves-light" id="print-report">
+              Print Report
+              <i class="material-icons right">print</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>

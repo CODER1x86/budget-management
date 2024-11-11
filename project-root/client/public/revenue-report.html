@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revenue Report - Property Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <div class="container">
+    <h4>Revenue Report</h4>
+    
+    <!-- Report Filters -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Report Filters</span>
+            <div class="row">
+              <div class="input-field col s12 m4">
+                <select id="year-select" class="browser-default">
+                  <!-- Years will be populated dynamically -->
+                </select>
+                <label>Select Year</label>
+              </div>
+              <div class="input-field col s12 m4">
+                <select id="month-select" class="browser-default">
+                  <option value="">All Months</option>
+                  <option value="01">January</option>
+                  <option value="02">February</option>
+                  <option value="03">March</option>
+                  <option value="04">April</option>
+                  <option value="05">May</option>
+                  <option value="06">June</option>
+                  <option value="07">July</option>
+                  <option value="08">August</option>
+                  <option value="09">September</option>
+                  <option value="10">October</option>
+                  <option value="11">November</option>
+                  <option value="12">December</option>
+                </select>
+                <label>Select Month</label>
+              </div>
+              <div class="input-field col s12 m4">
+                <select id="unit-select">
+                  <option value="">All Units</option>
+                  <!-- Units will be populated dynamically -->
+                </select>
+                <label>Select Unit</label>
+              </div>
+            </div>
+            <button class="btn waves-effect waves-light" id="generate-report">
+              Generate Report
+              <i class="material-icons right">assessment</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Report Summary -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Summary</span>
+            <div class="row">
+              <div class="col s12 m4">
+                <div class="summary-box">
+                  <h5>Total Revenue</h5>
+                  <h3 id="total-revenue">₱0.00</h3>
+                </div>
+              </div>
+              <div class="col s12 m4">
+                <div class="summary-box">
+                  <h5>Average Revenue</h5>
+                  <h3 id="average-revenue">₱0.00</h3>
+                </div>
+              </div>
+              <div class="col s12 m4">
+                <div class="summary-box">
+                  <h5>Total Transactions</h5>
+                  <h3 id="total-transactions">0</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Report -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Detailed Report</span>
+            <table class="striped responsive-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Unit</th>
+                  <th>Amount</th>
+                  <th>Payment Method</th>
+                </tr>
+              </thead>
+              <tbody id="report-data">
+                <!-- Report data will be populated here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Export Options -->
+    <div class="row">
+      <div class="col s12">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Export Options</span>
+            <button class="btn waves-effect waves-light" id="export-pdf">
+              Export as PDF
+              <i class="material-icons right">picture_as_pdf</i>
+            </button>
+            <button class="btn waves-effect waves-light" id="export-excel">
+              Export as Excel
+              <i class="material-icons right">grid_on</i>
+            </button>
+            <button class="btn waves-effect waves-light" id="print-report">
+              Print Report
+              <i class="material-icons right">print</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>

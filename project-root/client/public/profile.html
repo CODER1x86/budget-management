@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Property Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m4">
+        <!-- Profile Card -->
+        <div class="card">
+          <div class="card-content center-align">
+            <div class="profile-image">
+              <img id="profile-avatar" src="/assets/images/default-avatar.png" alt="Profile" class="circle responsive-img">
+              <button class="btn-floating btn-large waves-effect waves-light blue" id="change-avatar">
+                <i class="material-icons">photo_camera</i>
+              </button>
+            </div>
+            <span class="card-title" id="profile-name">User Name</span>
+            <p id="profile-email">user@example.com</p>
+            <p class="grey-text">Member since: <span id="join-date">January 1, 2024</span></p>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Quick Actions</span>
+            <div class="collection">
+              <a href="#change-password-modal" class="collection-item modal-trigger">
+                <i class="material-icons left">lock</i>Change Password
+              </a>
+              <a href="#notification-settings-modal" class="collection-item modal-trigger">
+                <i class="material-icons left">notifications</i>Notification Settings
+              </a>
+              <a href="#two-factor-modal" class="collection-item modal-trigger">
+                <i class="material-icons left">security</i>Two-Factor Authentication
+              </a>
+              <a href="#delete-account-modal" class="collection-item modal-trigger red-text">
+                <i class="material-icons left">delete_forever</i>Delete Account
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m8">
+        <!-- Profile Settings -->
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Profile Settings</span>
+            <form id="profile-form">
+              <div class="row">
+                <div class="input-field col s12 m6">
+                  <input id="first-name" type="text" class="validate">
+                  <label for="first-name">First Name</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <input id="last-name" type="text" class="validate">
+                  <label for="last-name">Last Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="email" type="email" class="validate">
+                  <label for="email">Email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="phone" type="tel" class="validate">
+                  <label for="phone">Phone Number</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <button class="btn waves-effect waves-light" type="submit">
+                    Save Changes
+                    <i class="material-icons right">save</i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Activity Log -->
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">Recent Activity</span>
+            <ul class="collection" id="activity-log">
+              <!-- Activity items will be populated here -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Change Password Modal -->
+  <div id="change-password-modal" class="modal">
+    <div class="modal-content">
+      <h4>Change Password</h4>
+      <form id="change-password-form">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="current-password" type="password" class="validate" required>
+            <label for="current-password">Current Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="new-password" type="password" class="validate" required>
+            <label for="new-password">New Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="confirm-new-password" type="password" class="validate" required>
+            <label for="confirm-new-password">Confirm New Password</label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-close waves-effect waves-red btn-flat">Cancel</button>
+      <button class="waves-effect waves-green btn" form="change-password-form">Change Password</button>
+    </div>
+  </div>
+
+  <!-- Notification Settings Modal -->
+  <div id="notification-settings-modal" class="modal">
+    <div class="modal-content">
+      <h4>Notification Settings</h4>
+      <form id="notification-settings-form">
+        <p>
+          <label>
+            <input type="checkbox" id="email-notifications" />
+            <span>Email Notifications</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="checkbox" id="payment-reminders" />
+            <span>Payment Reminders</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="checkbox" id="maintenance-alerts" />
+            <span>Maintenance Alerts</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="checkbox" id="budget-alerts" />
+            <span>Budget Alerts</span>
+          </label>
+        </p>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-close waves-effect waves-red btn-flat">Cancel</button>
+      <button class="waves-effect waves-green btn" form="notification-settings-form">Save Settings</button>
+    </div>
+  </div>
+
+  <!-- Two Factor Authentication Modal -->
+  <div id="two-factor-modal" class="modal">
+    <div class="modal-content">
+      <h4>Two-Factor Authentication</h4>
+      <div id="2fa-setup-steps">
+        <!-- 2FA setup steps will be populated here -->
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-close waves-effect waves-red btn-flat">Close</button>
+    </div>
+  </div>
+
+  <!-- Delete Account Modal -->
+  <div id="delete-account-modal" class="modal">
+    <div class="modal-content">
+      <h4>Delete Account</h4>
+      <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+      <form id="delete-account-form">
+        <div class="input-field">
+          <input id="delete-confirmation" type="text" required>
+          <label for="delete-confirmation">Type "DELETE" to confirm</label>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-close waves-effect waves-green btn-flat">Cancel</button>
+      <button class="waves-effect waves-red btn" form="delete-account-form">Delete Account</button>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>
